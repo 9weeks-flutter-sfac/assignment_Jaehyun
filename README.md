@@ -4,7 +4,7 @@
 ### 과제 레포지토리 예시
 
 ```
-./example-assignment                            // 폴더명 레포지토리 명과 동일 (assignment-teddy)
+./assignment-teddy                              // 폴더명 레포지토리 명과 동일 (assignment-teddy)
 ├── README.md                                   // 본인 이름 표기한 파일
 ├── day1                                        // 과제 요일 폴더
 │   └── assignment1                             // 1번째 과제 (안에 플러터 혹은 다트 프로젝트 생성)
