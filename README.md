@@ -2,7 +2,7 @@
 자세한 내용은 담당 멘토에게 확인하세요.
 
 ### 과제 레포지토리 예시
-
+ㅇㅇ
 ```
 ./assignment-teddy                              // 폴더명 레포지토리 명과 동일 (assignment-teddy)
 ├── README.md                                   // 본인 이름 표기한 파일
