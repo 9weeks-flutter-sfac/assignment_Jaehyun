@@ -177,27 +177,28 @@ class _ThirdPageState extends State<ThirdPage> {
             }),
       ]),
       floatingActionButton: FloatingActionButton(
-          onPressed: resetIcons, 
-          child: Icon(Icons.close),
-      );
-    }
+        onPressed: resetIcons,
+        child: Icon(Icons.close),
+      ),
+    );
+  }
 
-  Widget buildRow(iconName, title, callback) {
+  Widget buildRow(IconData iconName, title, callback) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
       IconButton(
-        icon: iconName,
+        icon: Icon(iconName),
         color: iconName == Icons.wb_sunny
-            ? (sunAction ? Colors.orange : Colors.grey)
+            ? (sunIconActive ? Colors.orange : Colors.grey)
             : iconName == Icons.nights_stay
-                ? (moonAction ? Colors.blue : Colors.grey)
+                ? (moonIconActive ? Colors.blue : Colors.grey)
                 : iconName == Icons.star
-                    ? (starAction ? Colors.yellow : Colors.grey)
+                    ? (starIconActive ? Colors.yellow : Colors.grey)
                     : null,
         onPressed: callback,
       ),
       Text(title),
       IconButton(
-        icon: Icons.navigate_next,
+        icon: Icon(Icons.navigate_next),
         color: Colors.black,
         onPressed: callback,
       ),
