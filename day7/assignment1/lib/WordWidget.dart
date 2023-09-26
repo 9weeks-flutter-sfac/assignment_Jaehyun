@@ -31,7 +31,7 @@ class WordWidget extends StatelessWidget {
               alignment: Alignment.center,
               padding: EdgeInsets.all(16),
               child: Text(
-                words[index]["example"].toString(),
+                '"${words[index]["example"]}"'.toString(),
                 style: TextStyle(
                     fontSize: 15, letterSpacing: 1, color: Colors.white54),
                 textAlign: TextAlign.center,
