@@ -91,6 +91,6 @@ flutter:
   fonts:
     - family: neo
       fonts:
-        - asset: fonts/neo.ttf
+        - asset: assets/fonts/neo.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
