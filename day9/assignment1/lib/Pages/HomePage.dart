@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: [
+      body: Stack(fit: StackFit.expand, children: [
         if (_isVideoInitialized)
           Positioned.fill(
             child: AspectRatio(
@@ -60,66 +60,87 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(),
                   child: Text(
                     "갈대숲",
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w900),
+                    style: TextStyle(
+                        fontSize: 42,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                 ),
                 SizedBox(
                   height: 120,
                 ),
-                DefaultTextStyle(
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  child: Container(
-                    child: Column(children: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SecretPage()));
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '갈대숲 확인하기',
-                              ),
-                              Icon(Icons.navigate_next_sharp)
-                            ],
-                          )),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AuthorPage()));
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '갈대숲에 누가있을까?',
-                              ),
-                              Icon(Icons.navigate_next_sharp)
-                            ],
-                          )),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => UploadPage()));
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '갈대숲에 외치러가기',
-                              ),
-                              Icon(Icons.navigate_next_sharp)
-                            ],
-                          )),
-                    ]),
-                  ),
+                Container(
+                  child: Column(children: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SecretPage()));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '갈대숲 확인하기',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            Icon(
+                              Icons.navigate_next_sharp,
+                              color: Colors.white,
+                            )
+                          ],
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AuthorPage()));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '갈대숲에 누가있을까?',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            Icon(
+                              Icons.navigate_next_sharp,
+                              color: Colors.white,
+                            )
+                          ],
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UploadPage()));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '갈대숲에 외치러가기',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            Icon(
+                              Icons.navigate_next_sharp,
+                              color: Colors.white,
+                            )
+                          ],
+                        )),
+                  ]),
                 )
               ],
             ),
