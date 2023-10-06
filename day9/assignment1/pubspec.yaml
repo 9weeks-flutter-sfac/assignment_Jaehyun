@@ -37,6 +37,7 @@ dependencies:
   image_picker: ^1.0.4
   animate_do: ^3.1.2
   secret_cat_sdk: ^0.0.6
+  video_player: ^2.7.2
 
 dev_dependencies:
   flutter_test:
