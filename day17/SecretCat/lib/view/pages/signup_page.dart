@@ -1,20 +1,31 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 import 'package:assignment2/controller/auth_controller.dart';
-import 'package:assignment2/controller/login_controller.dart';
-import 'package:assignment2/view/pages/signup_page.dart';
+import 'package:assignment2/controller/signup_controller.dart';
 import 'package:assignment2/widgets/custon_textFiled.dart';
 import 'package:assignment2/widgets/cutom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
-class LoginPage extends GetView<LoginController> {
-  const LoginPage({Key? key}) : super(key: key);
-  static const String route = '/login';
+class SignUpPage extends GetView<SignupController> {
+  const SignUpPage({Key? key}) : super(key: key);
+  static const String route = '/signup';
 
   @override
   Widget build(BuildContext context) {
+// 텍스트 필드 스타일
+    final inputDecoration = InputDecoration(
+      fillColor: Colors.white54,
+      filled: true,
+      border: OutlineInputBorder(),
+    );
+
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Stack(fit: StackFit.expand, children: [
         Positioned.fill(
             child: Image.network(
@@ -28,7 +39,7 @@ class LoginPage extends GetView<LoginController> {
                 Container(
                   decoration: BoxDecoration(),
                   child: Text(
-                    "비밀듣는 고양이",
+                    "회원가입 ",
                     style: TextStyle(
                         fontSize: 42,
                         fontWeight: FontWeight.bold,
@@ -38,28 +49,36 @@ class LoginPage extends GetView<LoginController> {
                 SizedBox(
                   height: 120,
                 ),
+
+                // 회원가입 폼
                 CustomTextFiled(
-                  controller: controller.idController,
-                  hintText: "아이디",
+                  controller: controller.emailController,
+                  focusNode: controller.emailFocusNode,
+                  hintText: "이메일",
                 ),
                 CustomTextFiled(
-                  controller: controller.pwController,
+                  controller: controller.passwordController,
+                  focusNode: controller.passwordFocusNode,
                   hintText: "비밀번호",
                   isPassword: true,
                 ),
-                SizedBox(
-                  height: 50,
+                CustomTextFiled(
+                  controller: controller.passwordConfirmController,
+                  focusNode: controller.passwordConfirmFocusNode,
+                  hintText: "비밀번호 확인",
+                  isPassword: true,
                 ),
+                CustomTextFiled(
+                  controller: controller.usernameController,
+                  focusNode: controller.usernameFocusNode,
+                  hintText: "닉네임",
+                ),
+
+                // 회원가입 버튼
                 CustomButton(
-                  onPressed: () => Get.toNamed(SignUpPage.route),
+                  onPressed: () => controller.signUp(),
                   title: "회원가입",
-                  tapColor: Color.fromARGB(99, 16, 96, 19),
-                ),
-                CustomButton(
-                  onPressed: () => controller.login(),
-                  title: "로그인",
-                  tapColor: Color.fromARGB(74, 244, 67, 54),
-                ),
+                )
               ],
             ),
           ),

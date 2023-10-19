@@ -1,71 +1,100 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 import 'package:animate_do/animate_do.dart';
+import 'package:assignment2/controller/secret_controller.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 var bgImgUrl =
-    "https://plus.unsplash.com/premium_photo-1664112065957-14bed05d96fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80";
+    "https://images.unsplash.com/photo-1663465374413-83cba00bff6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80";
 
-class AuthorPage extends StatefulWidget {
+class AuthorPage extends GetView<SecretController> {
   const AuthorPage({super.key});
   static const String route = '/author';
 
   @override
-  State<AuthorPage> createState() => _AuthorPageState();
-}
-
-class _AuthorPageState extends State<AuthorPage> {
-  @override
   Widget build(BuildContext context) {
+    final textStlye = TextStyle(
+        fontSize: 24, color: Colors.white70, fontWeight: FontWeight.bold);
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        title: Text(
+          "작성한 유저",
+          style: textStlye,
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        centerTitle: false,
+        centerTitle: true,
       ),
       body: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: NetworkImage(bgImgUrl),
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken)),
-        ),
-        // child: FutureBuilder(
-        //   future: SecretCatApi.fetchAuthors(),
-        //   builder: (context, snapshot) {
-        //     if (snapshot.hasData) {
-        //       return GridView.builder(
-        //         itemCount: snapshot.data?.length,
-        //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //           crossAxisCount: 3,
-        //         ),
-        //         itemBuilder: (context, index) {
-        //           return ZoomIn(
-        //             delay: Duration(milliseconds: 200 * index),
-        //             child: Column(
-        //               children: [
-        //                 CircleAvatar(
-        //                     backgroundColor: Colors.transparent,
-        //                     radius: 48,
-        //                     backgroundImage: NetworkImage(
-        //                       snapshot.data![index].avatar!,
-        //                     )),
-        //                 Text(
-        //                   snapshot.data![index].username,
-        //                   style: TextStyle(color: Colors.white),
-        //                 )
-        //               ],
-        //             ),
-        //           );
-        //         },
-        //       );
-        //     }
-        //     return CircularProgressIndicator();
-        //   },
-        // ),
-      ),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            image: DecorationImage(
+                image: NetworkImage(bgImgUrl),
+                fit: BoxFit.scaleDown,
+                colorFilter:
+                    ColorFilter.mode(Colors.black54, BlendMode.darken)),
+          ),
+          child: Obx(() {
+            if (controller.secrets.isEmpty) {
+              return CircularProgressIndicator();
+            } else {
+              return ListView.builder(
+                itemCount: controller.author.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://images.unsplash.com/photo-1615497001839-b0a0eac3274c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80"),
+                    ),
+                    title: Text(
+                      controller.author[index],
+                      style: TextStyle(color: Colors.white70),
+                    ),
+                  );
+                },
+              );
+            }
+          })
+
+          // child: FutureBuilder(
+          //   future: SecretCatApi.fetchAuthors(),
+          //   builder: (context, snapshot) {
+          //     if (snapshot.hasData) {
+          //       return GridView.builder(
+          //         itemCount: snapshot.data?.length,
+          //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //           crossAxisCount: 3,
+          //         ),
+          //         itemBuilder: (context, index) {
+          //           return ZoomIn(
+          //             delay: Duration(milliseconds: 200 * index),
+          //             child: Column(
+          //               children: [
+          //                 CircleAvatar(
+          //                     backgroundColor: Colors.transparent,
+          //                     radius: 48,
+          //                     backgroundImage: NetworkImage(
+          //                       snapshot.data![index].avatar!,
+          //                     )),
+          //                 Text(
+          //                   snapshot.data![index].username,
+          //                   style: TextStyle(color: Colors.white),
+          //                 )
+          //               ],
+          //             ),
+          //           );
+          //         },
+          //       );
+          //     }
+          //     return CircularProgressIndicator();
+          //   },
+          // ),
+          ),
     );
   }
 }

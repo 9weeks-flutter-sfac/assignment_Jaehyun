@@ -1,22 +1,22 @@
-// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unnecessary_string_interpolations, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:assignment2/controller/auth_controller.dart';
+import 'package:assignment2/controller/upload_controller.dart';
+import 'package:assignment2/widgets/custon_textFiled.dart';
+import 'package:assignment2/widgets/cutom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 var bgImgUrl =
-    "https://plus.unsplash.com/premium_photo-1664112065957-14bed05d96fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80";
+    "https://images.unsplash.com/photo-1663465376645-aca0b7c8227a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80";
 
-class UploadPage extends StatefulWidget {
+class UploadPage extends GetView<UploadController> {
   const UploadPage({super.key});
   static const String route = '/upload';
 
   @override
-  State<UploadPage> createState() => _UploadPageState();
-}
-
-class _UploadPageState extends State<UploadPage> {
-  @override
   Widget build(BuildContext context) {
-    var textController = TextEditingController();
+    var authController = Get.find<AuthController>();
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -28,9 +28,9 @@ class _UploadPageState extends State<UploadPage> {
           padding: EdgeInsets.all(16),
           alignment: Alignment.center,
           decoration: BoxDecoration(
+            color: Colors.black,
             image: DecorationImage(
                 image: NetworkImage(bgImgUrl),
-                fit: BoxFit.cover,
                 colorFilter:
                     ColorFilter.mode(Colors.black54, BlendMode.darken)),
           ),
@@ -38,34 +38,28 @@ class _UploadPageState extends State<UploadPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(
-                controller: textController,
+              Text(
+                "${authController.user!.username} 님",
+                style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              CustomTextFiled(
+                controller: controller.secretTextController,
+                hintText: "내용을 입력하세요",
                 minLines: 7,
                 maxLines: 8,
-                decoration:
-                    InputDecoration(filled: true, fillColor: Colors.white24),
+                focusNode: controller.secretTextFocus,
               ),
-              // TextButton(
-              //   onPressed: () async {
-              //     if (textController.text != '') {
-              //       var secret =
-              //           await SecretCatApi.addSecret(textController.text);
-              //       if (secret != null) {
-              //         Navigator.pop(context);
-              //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              //             content: Center(
-              //                 child: Text('"${secret.secret}"를 외쳤습니다'))));
-              //       }
-              //     }
-              //   },
-              //   child: Text(
-              //     "외치기",
-              //     style: TextStyle(
-              //         fontSize: 16,
-              //         fontWeight: FontWeight.bold,
-              //         color: Colors.white),
-              //   ),
-              // ),
+              SizedBox(
+                height: 50,
+              ),
+              CustomButton(
+                  onPressed: () => controller.uploadSecret(), title: '비밀 작성하기')
             ],
           )),
     );

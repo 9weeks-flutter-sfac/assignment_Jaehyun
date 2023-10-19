@@ -56,7 +56,7 @@ class User {
   bool emailVisibility;
   String email;
   String name;
-  String avatar;
+  String? avatar;
   User({
     required this.id,
     required this.collectionId,
@@ -89,18 +89,17 @@ class User {
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
-      id: map['id'] as String,
-      collectionId: map['collectionId'] as String,
-      collectionName: map['collectionName'] as String,
-      created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
-      updated: DateTime.fromMillisecondsSinceEpoch(map['updated'] as int),
-      username: map['username'] as String,
-      verified: map['verified'] as bool,
-      emailVisibility: map['emailVisibility'] as bool,
-      email: map['email'] as String,
-      name: map['name'] as String,
-      avatar: map['avatar'] as String,
-    );
+        id: (map["id"] ?? ""),
+        collectionId: (map["collectionId"] ?? ""),
+        collectionName: (map["collectionName"] ?? ""),
+        created: DateTime.parse(map["created"]),
+        updated: DateTime.parse(map["updated"]),
+        username: (map["username"] ?? ""),
+        verified: (map["verified"] ?? false),
+        emailVisibility: (map["emailVisibility"] ?? false),
+        email: (map["email"] ?? ""),
+        name: (map["name"] ?? ""),
+        avatar: (map["avatar"] ?? ""));
   }
 
   String toJson() => json.encode(toMap());
