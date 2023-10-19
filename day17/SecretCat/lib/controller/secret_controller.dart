@@ -4,7 +4,7 @@ import 'package:assignment2/controller/auth_controller.dart';
 import 'package:assignment2/controller/upload_controller.dart';
 import 'package:assignment2/model/secrets.dart';
 import 'package:assignment2/view/pages/main_page.dart';
-import 'package:assignment2/widgets/Custom_dialog.dart';
+import 'package:assignment2/widgets/custom_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

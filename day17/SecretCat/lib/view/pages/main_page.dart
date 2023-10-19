@@ -4,7 +4,7 @@ import 'package:assignment2/controller/auth_controller.dart';
 import 'package:assignment2/view/pages/author_page.dart';
 import 'package:assignment2/view/pages/secret_page.dart';
 import 'package:assignment2/view/pages/upload_page.dart';
-import 'package:assignment2/widgets/cutom_button.dart';
+import 'package:assignment2/widgets/custom_button.dart';
 import 'package:assignment2/widgets/reversCustom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,16 +38,12 @@ class MainPage extends GetView<AuthController> {
                       CustomButton(
                         onPressed: () => Get.toNamed(SecretPage.route),
                         title: "글 작성하러 가기",
-                      ),
-                      SizedBox(
-                        height: 32,
+                        sizeBoxHeight: 32,
                       ),
                       CustomButton(
                         onPressed: () => Get.toNamed(AuthorPage.route),
                         title: "작성한 사람 보러가기",
-                      ),
-                      SizedBox(
-                        height: 32,
+                        sizeBoxHeight: 32,
                       ),
                       CustomButton(
                         onPressed: () => Get.toNamed(UploadPage.route),

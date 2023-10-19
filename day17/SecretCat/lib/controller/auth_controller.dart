@@ -1,6 +1,6 @@
 import 'package:assignment2/view/pages/Login_page.dart';
 import 'package:assignment2/view/pages/main_page.dart';
-import 'package:assignment2/widgets/Custom_dialog.dart';
+import 'package:assignment2/widgets/custom_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

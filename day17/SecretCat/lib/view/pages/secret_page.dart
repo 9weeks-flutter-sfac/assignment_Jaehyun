@@ -14,10 +14,11 @@ class SecretPage extends GetView<SecretController> {
 
   @override
   Widget build(BuildContext context) {
-    final textStlye = TextStyle(
+    // 스타일
+    const textStlye = TextStyle(
         fontSize: 24, color: Colors.white70, fontWeight: FontWeight.bold);
-
     var textcolor = Colors.white70;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -37,31 +38,31 @@ class SecretPage extends GetView<SecretController> {
                 image: NetworkImage(bgImgUrl),
                 fit: BoxFit.cover,
                 colorFilter:
-                    ColorFilter.mode(Colors.black54, BlendMode.darken)),
+                    const ColorFilter.mode(Colors.black54, BlendMode.darken)),
           ),
           child: Obx(() {
-            if (controller.secrets?.isEmpty ?? true) {
-              return CircularProgressIndicator();
+            if (controller.secrets.isEmpty) {
+              return const CircularProgressIndicator();
             } else {
               return PageView.builder(
                 scrollDirection: Axis.vertical,
-                itemCount: controller.secrets?.length,
+                itemCount: controller.secrets.length,
                 itemBuilder: (context, index) {
-                  var secret = controller.secrets?[index];
+                  var secret = controller.secrets[index];
 
                   return FadeInRight(
-                    duration: Duration(milliseconds: 150),
+                    duration: const Duration(milliseconds: 150),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          secret?.secret ?? "",
+                          secret.secret,
                           style: textStlye,
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
-                          secret?.authorName ?? "익명",
+                          secret.authorName,
                           style:
                               textStlye.copyWith(fontWeight: FontWeight.w300),
                         ),
@@ -71,50 +72,7 @@ class SecretPage extends GetView<SecretController> {
                 },
               );
             }
-          })
-          // child: FutureBuilder(
-          //   future: SecretCatApi.fetchSecrets(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.hasData) {
-          //       var reverseList = snapshot.data!.reversed.toList();
-          //       print(reverseList.length);
-          //       return PageView.builder(
-          //         scrollDirection: Axis.vertical,
-          //         itemCount: snapshot.data?.length,
-          //         itemBuilder: (context, index) {
-          //           return FadeInRight(
-          //             duration: Duration(milliseconds: 150),
-          //             child: Column(
-          //               crossAxisAlignment: CrossAxisAlignment.center,
-          //               mainAxisAlignment: MainAxisAlignment.center,
-          //               children: [
-          //                 Text(
-          //                   reverseList[index].secret,
-          //                   style: TextStyle(
-          //                       fontSize: 16,
-          //                       color: Colors.white,
-          //                       fontWeight: FontWeight.bold),
-          //                 ),
-          //                 SizedBox(
-          //                   height: 16,
-          //                 ),
-          //                 Text(
-          //                   reverseList[index].author?.username ?? "익명",
-          //                   style: TextStyle(
-          //                       fontSize: 16,
-          //                       color: Colors.white,
-          //                       fontWeight: FontWeight.bold),
-          //                 ),
-          //               ],
-          //             ),
-          //           );
-          //         },
-          //       );
-          //     }
-          //     return CircularProgressIndicator();
-          //   },
-          // ),
-          ),
+          })),
     );
   }
 }

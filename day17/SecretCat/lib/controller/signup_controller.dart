@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:assignment2/model/users.dart';
-import 'package:assignment2/widgets/Custom_dialog.dart';
+import 'package:assignment2/widgets/custom_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

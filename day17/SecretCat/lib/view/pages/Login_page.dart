@@ -1,12 +1,10 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
-import 'package:assignment2/controller/auth_controller.dart';
-import 'package:assignment2/controller/login_controller.dart';
-import 'package:assignment2/view/pages/signup_page.dart';
-import 'package:assignment2/widgets/custon_textFiled.dart';
-import 'package:assignment2/widgets/cutom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
+import 'package:assignment2/controller/login_controller.dart';
+import 'package:assignment2/view/pages/signup_page.dart';
+import 'package:assignment2/widgets/custom_button.dart';
+import '../../widgets/custom_textFiled.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({Key? key}) : super(key: key);

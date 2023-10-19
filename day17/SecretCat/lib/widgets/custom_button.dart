@@ -1,9 +1,6 @@
-import 'package:assignment2/view/pages/upload_page.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(

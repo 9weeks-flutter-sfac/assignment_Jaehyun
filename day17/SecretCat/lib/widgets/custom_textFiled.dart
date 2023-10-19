@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CustomTextFiled extends StatelessWidget {
   const CustomTextFiled(
@@ -25,20 +25,20 @@ class CustomTextFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle textFiledTextStyle =
-        TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
+        const TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
     InputDecoration textFiledInputStyle = InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.black45),
-        focusedBorder: OutlineInputBorder(
+        hintStyle: const TextStyle(color: Colors.black45),
+        focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white70, width: 3)),
-        enabledBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.white24)),
+        enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white24)),
         filled: true,
         fillColor: Colors.white24);
 
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: width,
           child: TextField(
             focusNode: focusNode,

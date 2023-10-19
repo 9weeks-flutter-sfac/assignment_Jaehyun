@@ -2,8 +2,8 @@
 
 import 'package:assignment2/controller/auth_controller.dart';
 import 'package:assignment2/controller/upload_controller.dart';
-import 'package:assignment2/widgets/custon_textFiled.dart';
-import 'package:assignment2/widgets/cutom_button.dart';
+import 'package:assignment2/widgets/custom_textFiled.dart';
+import 'package:assignment2/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

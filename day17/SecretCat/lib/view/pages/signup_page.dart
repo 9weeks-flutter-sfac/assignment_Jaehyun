@@ -1,11 +1,10 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
-import 'package:assignment2/controller/auth_controller.dart';
-import 'package:assignment2/controller/signup_controller.dart';
-import 'package:assignment2/widgets/custon_textFiled.dart';
-import 'package:assignment2/widgets/cutom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
+
+import 'package:assignment2/widgets/custom_button.dart';
+import '../../controller/signup_controller.dart';
+import '../../widgets/custom_textFiled.dart';
 
 class SignUpPage extends GetView<SignupController> {
   const SignUpPage({Key? key}) : super(key: key);
@@ -13,13 +12,6 @@ class SignUpPage extends GetView<SignupController> {
 
   @override
   Widget build(BuildContext context) {
-// 텍스트 필드 스타일
-    final inputDecoration = InputDecoration(
-      fillColor: Colors.white54,
-      filled: true,
-      border: OutlineInputBorder(),
-    );
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
